@@ -297,7 +297,7 @@ def register_tools(app):
             body = ""
             if hasattr(e, "error") and hasattr(e.error, "response"):
                 body = getattr(e.error.response, "text", "")
-            return f"Error creating custom food: {e} | Response: {body}"
+            return f"Error updating custom food: {e} | Response: {body}"
         except Exception as e:
             return f"Error updating custom food: {str(e)}"
 
@@ -360,7 +360,7 @@ def register_tools(app):
             body = ""
             if hasattr(e, "error") and hasattr(e.error, "response"):
                 body = getattr(e.error.response, "text", "")
-            return f"Error creating custom food: {e} | Response: {body}"
+            return f"Error logging food: {e} | Response: {body}"
         except Exception as e:
             return f"Error logging food: {str(e)}"
 
