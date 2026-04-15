@@ -192,7 +192,9 @@ def authenticate(token_path: str, token_base64_path: str, force_reauth: bool = F
     except GarminConnectConnectionError as e:
         error_msg = str(e)
         print(f"\n✗ Authentication error", file=sys.stderr)
-        if "500" in error_msg or "503" in error_msg:
+        if "401" in error_msg or "403" in error_msg:
+            print("  Invalid credentials. Please check your email and password.", file=sys.stderr)
+        elif "500" in error_msg or "503" in error_msg:
             print("  Garmin Connect service issue. Please try again later.", file=sys.stderr)
         else:
             print(f"  {error_msg.split(':')[0]}", file=sys.stderr)
